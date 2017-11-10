@@ -1,0 +1,26 @@
+<div ng-controller="LeftNavCtrl">
+    <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+            <h2 flex md-truncate >MENU</h2>
+
+            <!-- <md-button class="md-icon-button" aria-label="" ng-click="close()" >
+                <md-icon md-svg-icon="../icons/svg/close.svg" hide-gt-md></md-icon>
+            </md-button> -->
+        </div>
+    </md-toolbar>
+
+    <md-content>
+
+    </md-content>
+    <section layout="row" flex>
+        <md-content flex layout-padding>
+            <!-- <md-subheader class="md-no-sticky">Menu Principal</md-subheader> -->
+
+            <md-list-item ng-click="navigateTo(item.extraScreen, $event)" ng-repeat="item in items" >
+                <md-icon md-svg-icon="{{item.icon}}" class="menu-icon"></md-icon>
+                <p>{{ item.name }}</p>
+            </md-list-item>
+    
+        </md-content>
+    </section>
+</div>

@@ -1,0 +1,30 @@
+{
+  "name": "sige-vendas-marketing",
+  "version": "1.0.0",
+  "description": "Website de vendas e marketing - SIGE\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[M\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[V",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "angular-animate": "^1.6.6",
+    "angular-aria": "^1.6.6",
+    "angular-material": "^1.1.5",
+    "angular-messages": "^1.6.6",
+    "angular-route": "^1.6.6",
+    "angular-touch": "^1.6.6",
+    "gitignore": "^0.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennerparreiras/sige-vendas-marketing.git"
+  },
+  "author": "Denner Parreiras",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dennerparreiras/sige-vendas-marketing/issues"
+  },
+  "homepage": "https://github.com/dennerparreiras/sige-vendas-marketing#readme"
+}
