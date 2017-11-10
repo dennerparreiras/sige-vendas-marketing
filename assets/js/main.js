@@ -8,6 +8,7 @@ app.config(function ($routeProvider,$locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
         .when("/", {templateUrl: "assets/templates/home.html", controller: "AppCtrl", authorize: true})
+        .when("/oportunidades", {templateUrl: "assets/templates/interest_form.html", controller: "InterestCtrl", authorize: true})
         .when('/404', {templateUrl: "assets/templates/404.html", authorize: true})
         .otherwise("/404");
 });
@@ -33,6 +34,16 @@ app.config(function($mdThemingProvider) {
  * Controllers
  */
 app.controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log){
+
+});
+
+app.controller('InterestCtrl', function ($scope, $timeout, $mdSidenav, $log){
+
+  $scope.project = {
+    description: 'Nuclear Missile Defense System',
+    rate: 500,
+    special: true
+  };
 
 });
 
@@ -84,7 +95,7 @@ app.controller('NavCtrl', function ($scope, $timeout, $mdSidenav, $log) {
     }
 });
 
-app.controller('LeftNavCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+app.controller('LeftNavCtrl', function ($scope, $timeout, $mdSidenav, $log, $mdDialog) {
     $scope.close = function () {
       // Component lookup should always be available since we are not using `ng-if`
       $mdSidenav('left').close()
