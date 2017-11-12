@@ -16,7 +16,7 @@
         <md-content flex layout-padding>
             <!-- <md-subheader class="md-no-sticky">Menu Principal</md-subheader> -->
 
-            <md-list-item ng-click="navigateTo(item.extraScreen, $event)" ng-repeat="item in items" >
+            <md-list-item ng-click="navigateTo(item.link)" ng-repeat="item in items" >
                 <md-icon md-svg-icon="{{item.icon}}" class="menu-icon"></md-icon>
                 <p>{{ item.name }}</p>
             </md-list-item>
