@@ -1,26 +1,32 @@
-<div ng-controller="LeftNavCtrl">
-    <md-toolbar class="md-hue-2">
-        <div class="md-toolbar-tools">
-            <h2 flex md-truncate >MENU</h2>
 
-            <!-- <md-button class="md-icon-button" aria-label="" ng-click="close()" >
-                <md-icon md-svg-icon="../icons/svg/close.svg" hide-gt-md></md-icon>
-            </md-button> -->
-        </div>
+
+<md-sidenav
+class="md-sidenav-left"
+md-component-id="left"
+
+md-whiteframe="4"
+>
+
+    <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">MENU</h1>
     </md-toolbar>
-
-    <md-content>
-
-    </md-content>
-    <section layout="row" flex>
-        <md-content flex layout-padding>
+    <!-- <md-content>
+        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+            Close Sidenav Left
+        </md-button>
+        <p hide show-gt-md>
+            This sidenav is locked open on your device. To go back to the default behavior,
+            narrow your display.
+        </p>
+    </md-content> -->
+    <md-content ng-controller="SideNavCtrl">
             <!-- <md-subheader class="md-no-sticky">Menu Principal</md-subheader> -->
 
-            <md-list-item ng-click="navigateTo(item.link)" ng-repeat="item in items" >
+            <md-list-item ng-click="toPage(item.page)" ng-repeat="item in items" >
                 <md-icon md-svg-icon="{{item.icon}}" class="menu-icon"></md-icon>
                 <p>{{ item.name }}</p>
             </md-list-item>
     
-        </md-content>
-    </section>
-</div>
+    </md-content>
+
+</md-sidenav>

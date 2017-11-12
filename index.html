@@ -9,23 +9,10 @@
         <link rel="stylesheet" href="./assets/css/style.css" />
     </head>
     <body ng-app="SIGE" ng-cloak>
-        <div ng-controller="NavCtrl" layout="column" ng-cloak>
-            <header ng-include='"assets/templates/header.html"'></header>
-            <section layout="row" flex>
-
-                <md-sidenav
-                class="md-sidenav-left"
-                md-component-id="left"
-                md-is-locked-open="$mdMedia('gt-md')"
-                md-whiteframe="4"
-                ng-include='"assets/templates/sidenav.html"'>
-                </md-sidenav>
-
-                <md-content flex >
-                    <ng-view></ng-view>
-                </md-content>
-            
-            </section>
+        <div data-ng-controller="AppCtrl" layout="column" ng-cloak>
+            <header data-ng-include='"assets/templates/header.html"'></header>
+            <aside data-ng-include='"assets/templates/sidenav.html"'></aside>
+            <section layout="row" data-ng-view flex layout-padding></section>
         
         </div>
 
@@ -40,7 +27,8 @@
       <script src="./node_modules/angular-material/angular-material.min.js"></script>
 
       <!-- SIGE -->
-      <script src="./assets/js/main.js"></script>
+      <script src="./assets/js/app.js"></script>
+      <script src="./assets/js/app.routes.js"></script>
       
     </body>
 </html>
