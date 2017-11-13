@@ -7,12 +7,16 @@
         <!-- Style sheet -->
         <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css" />
         <link rel="stylesheet" href="./assets/css/style.css" />
+        <!-- Material icons font hosted by Google -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <!-- Material icons CSS toolkit -->
+        <link rel="stylesheet" href="css/material-icons.css">
     </head>
     <body ng-app="SIGE" ng-cloak>
         <div data-ng-controller="AppCtrl" layout="column" ng-cloak>
             <header data-ng-include='"assets/templates/header.html"'></header>
             <aside data-ng-include='"assets/templates/sidenav.html"'></aside>
-            <section layout="row" data-ng-view flex layout-padding></section>
+            <section layout="row" data-ng-view layout-padding></section>
         
         </div>
 
