@@ -26,7 +26,7 @@
 			// 	controllerAs: 'UsersController',
 			// })
 			.when('/ecommerce', {
-				templateUrl: 'assets/templates/ecommerce.html',
+				templateUrl: 'assets/templates/ecommerce/ecommerce.html',
 				controller: 'ECommerceController',
 				controllerAs: 'ECommerceController',
 			})

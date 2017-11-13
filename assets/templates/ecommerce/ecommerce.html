@@ -1,0 +1,25 @@
+<md-content flex>
+
+    <div flex-xs flex-gt-xs="100" layout="column">
+        <input type="text" ng-model="searchKeys" class="search-box" placeholder="Pesquisar..." ng-change="search()">
+
+        <md-card md-theme-watch ng-repeat="product in filtered">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{ product.name }}</span>
+                    <span class="md-subhead">Preço: {{ formatNumber( product.price ) }}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="addToCart(product)">Adicionar ao carrinho</md-button>
+            </md-card-actions>
+        </md-card>
+
+    </div>
+
+    <div class="button-float">
+        <md-button class="md-fab" ng-click="openCart($event)">
+            <i class="material-icons">add_shopping_cart</i>
+        </md-button>
+    </div>
+</md-content>

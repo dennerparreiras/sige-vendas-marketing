@@ -2,3 +2,41 @@
     width: 36px;
     height: 36px; 
 }
+
+.wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.menu-bar {
+    min-height: 50px;
+}
+
+.menu-icon {
+    padding: 10px;
+}
+
+.line-block {
+    display: inline-block;
+    width: 90%;
+}
+
+.button-float {
+    position: fixed;
+    width: 56px;
+    bottom: 15px;
+    right: 50px;
+}
+
+.button-float i {
+    font-size: 40px;
+    margin-top: 6px;
+}
+
+.login-form {
+    width: 70%;
+}

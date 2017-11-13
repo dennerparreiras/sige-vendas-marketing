@@ -1,0 +1,69 @@
+<div layout="column" class="wrapper">
+    <md-content layout-padding>
+        <md-card md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Total da compra: {{ totalCard() }} </span>
+                    <span class="md-headline">Total da itens: {{ cart.length }} </span>
+                </md-card-title-text>
+            </md-card-title>
+        </md-card>
+
+        <form name="clientForm">
+            <div layout="row">
+                <span>Dados para pagamento:</span>
+            </div>
+
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>Nome</label>
+                    <input type="text" ng-model="purchase.name">
+                </md-input-container>
+
+                <md-input-container flex="50">
+                    <label>CPF</label>
+                    <input type="text" ng-model="purchase.registration_code">
+                </md-input-container>
+            </div>
+
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>Data Nascimento</label>
+                    <input type="date" ng-model="purchase._birth">
+                </md-input-container>
+            </div>
+
+            <hr />
+
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>Numero do cartão</label>
+                    <input type="number" ng-model="purchase.number">
+                </md-input-container>
+
+            </div>
+            
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>CVV</label>
+                    <input type="text" ng-model="purchase.cvv">
+                </md-input-container>
+
+                <md-input-container flex="50">
+                    <label>Vencimento MM-AAAA</label>
+                    <input type="text" ng-model="purchase._dueDate">
+                </md-input-container>
+            </div>
+
+            <div layout="row">
+                <md-button type="button" class="button-black" ng-click="purchase()">Confirmar</md-button>
+            </div>
+        </form>
+
+        <div class="button-float">
+            <md-button class="md-fab">
+                <i class="material-icons" ng-click="openCart($event)">add_shopping_cart</i>
+            </md-button>
+        </div>
+    </md-content>
+</div>
