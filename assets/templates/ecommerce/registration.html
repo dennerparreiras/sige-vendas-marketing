@@ -1,0 +1,28 @@
+<div layout="column" class="wrapper">
+        <md-content layout-padding>
+        <form name="userForm">
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>Nome</label>
+                    <input type="text" ng-model="user.name">
+                </md-input-container>
+
+                <md-input-container flex="50">
+                    <label>CPF</label>
+                    <input type="text" ng-model="user.registration_code">
+                </md-input-container>
+            </div>
+
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>Data Nascimento</label>
+                    <input type="date" ng-model="user._birth">
+                </md-input-container>
+            </div>
+
+            <div layout="row">
+                <md-button type="submit" ng-click="register()">Salvar</md-button>
+            </div>
+        </form>
+    </md-content>
+</div>

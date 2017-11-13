@@ -1,20 +1,19 @@
 (function() {
   'use strict';
-
   angular.module('SIGE', [
       'SIGE.routes',
+      'SIGE.service',
       'SIGE.home',
       'SIGE.sideNav',
       'SIGE.login',
       'SIGE.users',
-      'SIGE.service',
       'SIGE.ecommerce',
       'SIGE.clients',
       'SIGE.products',
       'SIGE.news',
       'SIGE.opportunities'
-  ]);
-
+    ]);
+    
   angular.module('SIGE.routes', ['ngRoute', 'ngMaterial']);
   angular.module('SIGE.home', []);
   angular.module('SIGE.sideNav', []);
@@ -185,7 +184,7 @@
   angular.module('SIGE.users').controller('UserController', function($scope, $rootScope, $location, $routeParams) {
       
       if($routeParams.id) {
-          $scope.user = $rootScope.getData('users', $routeParams.id);
+          scope.user = $rootScope.getData('users', $routeParams.id);
           $scope.user._birth = new Date($scope.user.birth);
       }
       
@@ -197,10 +196,8 @@
 
   });
 
-  angular.module('SIGE.ecommerce').controller('ECommerceController', function($scope, $rootScope, $mdDialog, $mdToast) {
-      $scope.products = $rootScope.getData('products');
-      
-      $scope.addToCart = function(product) {
+  angular.module('SIGE.ecommerce').controller('ECommerceController', function ($scope, $rootScope, $mdDialog, $mdToast, $filter) {
+      $scope.addToCart = function (product) {
           product.id = undefined;
           $rootScope.saveData('cart', angular.copy(product));
           $mdToast.show(
@@ -210,19 +207,28 @@
           );
       };
 
-      $scope.openCart = function(ev) {
+      $scope.search = function () {
+          $scope.filtered = $filter('filter')($scope.products, $scope.searchKeys);
+      };
+
+      $scope.openCart = function (ev) {
           $mdDialog.show({
               controller: 'CartController',
-              templateUrl: 'pages/ecommerce/cart.modal.html',
+              templateUrl: 'assets/templates/ecommerce/cart.modal.html',
               parent: angular.element(document.body),
               targetEvent: ev,
-              clickOutsideToClose:true
-            })
-              .then(function(answer) {
-                  
-              }, function() {
+              clickOutsideToClose: true
+          })
+              .then(function (answer) {
+
+              }, function () {
               });
       };
+
+      $scope.products = $rootScope.getData('products');
+      $scope.searchKeys = '';
+
+      $scope.search();
 
   });
 

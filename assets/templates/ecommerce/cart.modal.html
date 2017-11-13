@@ -1,0 +1,40 @@
+<md-dialog aria-label="Carrino de Compras" class="modal-size">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Carrino de Compras - Total: {{ totalCard() }}</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="max-width:800px; max-height:810px; min-width: 600px;" layout-padding>
+            
+            <form name="projectForm">
+                <div layout="row" ng-repeat="product in cart">
+                    <md-input-container flex="60">
+                        <label>Nome:</label>
+                        <input ng-model="product.name" ng-disabled="true">
+                    </md-input-container>
+                    <md-input-container flex="20">
+                        <label>Preço:</label>
+                        <input ng-model="product.price" type="number" ng-disabled="true">
+                    </md-input-container>
+                    <md-input-container flex="20">
+                        <md-button ng-click="removeFromCart(product.id)" >
+                            <i class="material-icons">remove_shopping_cart</i>
+                        </md-button>
+                    </md-input-container>
+                </div>
+            </form>
+
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()" >
+                Cancelar
+            </md-button>
+            <md-button class="md-raised md-primary" ng-click="toResume()" ng-if="showCart()">
+                Continuar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
