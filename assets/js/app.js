@@ -82,7 +82,10 @@
 
   angular.module('SIGE.news').controller('NewsController', function($scope) { });
 
-  angular.module('SIGE.opportunities').controller('OpportunitiesController', function($scope) { });
+  angular.module('SIGE.opportunities').controller('OpportunitiesController', function($scope) {
+
+    
+  });
   
   angular.module('SIGE.sideNav').controller('NavCtrl', function($scope, $timeout, $mdSidenav, $log) {
       $scope.toggleLeft = buildDelayedToggler('left');

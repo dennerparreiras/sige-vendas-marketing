@@ -1,1 +1,47 @@
-Oportunidades
+<div ng-controller="OpportunitiesController" layout="row" layout-align="center center">
+    
+      <div class="rh">
+        <h1>SIGE - Cadastro de Talentos</h1>
+        <h3>Venha trabalhar com a gente!</h3>
+          <form name="opportunitiesForm" action="" method="POST">
+            <md-input-container>
+                <!-- <label>Nome Completo</label> -->
+                <input ng-model="candidato.nome" name="NomeCandidato" type="text" placeholder="Nome Completo" ng-required="true">
+                <div ng-messages="opportunitiesForm.NomeCandidato.$error">
+                    <div ng-message="required">Insira seu nome completo!</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <!-- <label>Email</label> -->
+                <input ng-model="candidato.email" name="EmailCandidato" type="email" placeholder="Email" ng-required="true">
+                <div ng-messages="opportunitiesForm.EmailCandidato.$error">
+                    <div ng-message="required">É necessário fornecer corretamente o seu email.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Vaga de interesse</label>
+                <md-select ng-model="candidato.Vaga" name="VagaCandidato" ng-required="true">
+                        <md-option value=".Net">.Net Developer</md-option>
+                        <md-option value="PHP">PHP Developer</md-option>
+                        <md-option value="Ionic">Ionic Developer</md-option>
+                        <md-option value="Frontend">Frontend Developer</md-option>
+                </md-select>
+                <div ng-messages="opportunitiesForm.VagaCandidato.$error">
+                    <div ng-message="required">Selecione uma vaga!</div>
+                </div>
+            </md-input-container>
+    
+            <md-input-container>
+                <!-- <label>Pretensão Salarial</label> -->
+                <input ng-model="candidato.pretencao" name="PretensaoCandidato" type="number" step="0.01" placeholder="Pretenção Salarial" ng-required="true">
+                <div ng-messages="opportunitiesForm.EmailCandidato.$error">
+                    <div ng-message="required">É necessário fornecer corretamente o seu email.</div>
+                </div>
+            </md-input-container>    
+
+            <md-button class="md-raised md-primary" type="submit">Registrar Interesse</md-button>
+          </form>
+      </div>
+</div>
