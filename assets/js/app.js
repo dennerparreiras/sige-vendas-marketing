@@ -24,7 +24,7 @@
   angular.module('SIGE.clients', []);
   angular.module('SIGE.products', []);
   angular.module('SIGE.news', []);
-  angular.module('SIGE.opportunities', []);
+  angular.module('SIGE.opportunities', ['ngMaterial']);
 
   angular.module('SIGE').controller('AppCtrl', function($scope, $location, $timeout, $mdSidenav, $log) {
       $scope.isSpecificPage = function() {
@@ -82,9 +82,36 @@
 
   angular.module('SIGE.news').controller('NewsController', function($scope) { });
 
-  angular.module('SIGE.opportunities').controller('OpportunitiesController', function($scope) {
-
+  angular.module('SIGE.opportunities').controller('OpportunitiesController', function($scope, $http, $mdToast) {
+    $scope.candidato = {};
     
+    $scope.Send = function() {
+        $http({
+            method: 'POST',
+            url: '/',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: {
+                NomeCandidato: $scope.candidato.NomeCandidato, 
+                EmailCandidato: $scope.candidato.EmailCandidato,
+                VagaCandidato: $scope.candidato.VagaCandidato,
+                PretensaoCandidato: $scope.candidato.PretensaoCandidato
+            }
+        })
+        .then(function () {
+            $mdToast.show(
+                $mdToast.simple()
+                  .textContent('Executado!')
+                  .hideDelay(3000)
+              );
+        });
+      }
+
   });
   
   angular.module('SIGE.sideNav').controller('NavCtrl', function($scope, $timeout, $mdSidenav, $log) {
