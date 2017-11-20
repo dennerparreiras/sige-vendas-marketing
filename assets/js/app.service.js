@@ -1,9 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('SIGE').run(function ($rootScope) {
-
-        var products = [{
+    angular.module('SIGE').run(function ($rootScope, $http) {
+        /* var products = [{
             id: 1,
             name: 'Batata Rufles',
             price: 22.30,
@@ -17,15 +16,25 @@
             id: 3,
             name: 'Bandaid',
             price: 99.99,
-        }];
+        }]; */
         
         var service = {
-            products: products,
             cart: []
         }
 
+        $rootScope.getProduto = function (data, id, done) {
+            var url = data;
+            if (id) {
+                url += "/" + id;
+            }
+            $http.get("http://pickingapi.azurewebsites.net/api/" + url)
+                .then(response => {
+                    done(response.data);
+                });
+        };
+
         $rootScope.getData = function (data, id) {
-           if (!id) {
+            if (!id) {
                 return service[data];
             }
 

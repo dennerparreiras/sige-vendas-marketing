@@ -44,16 +44,21 @@
 				templateUrl: 'assets/templates/product.html',
 				controller: 'ProductController',
 				controllerAs: 'ProductController',
-      })
+      		})
 			.when('/news', {
 				templateUrl: 'assets/templates/news.html',
 				controller: 'NewsController',
 				controllerAs: 'NewsController',
-      })
+      		})
 			.when('/opportunities', {
 				templateUrl: 'assets/templates/opportunities.html',
 				controller: 'OpportunitiesController',
 				controllerAs: 'OpportunitiesController',
+			})
+			.when('/resume', {
+				templateUrl: 'assets/templates/ecommerce/resume.html',
+				controller: 'ResumeController',
+				controllerAs: 'ResumeController',
 			})
 			.otherwise({redirectTo: '/home'});
 	}

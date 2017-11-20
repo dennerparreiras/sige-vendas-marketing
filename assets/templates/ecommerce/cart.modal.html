@@ -12,14 +12,14 @@
                 <div layout="row" ng-repeat="product in cart">
                     <md-input-container flex="60">
                         <label>Nome:</label>
-                        <input ng-model="product.name" ng-disabled="true">
+                        <input ng-model="product.nome" ng-disabled="true">
                     </md-input-container>
                     <md-input-container flex="20">
                         <label>Preço:</label>
-                        <input ng-model="product.price" type="number" ng-disabled="true">
+                        <input ng-model="product.preco" type="number" ng-disabled="true">
                     </md-input-container>
                     <md-input-container flex="20">
-                        <md-button ng-click="removeFromCart(product.id)" >
+                        <md-button ng-click="removeFromCart(product.idProduto)" >
                             <i class="material-icons">remove_shopping_cart</i>
                         </md-button>
                     </md-input-container>
