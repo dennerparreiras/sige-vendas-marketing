@@ -11,7 +11,8 @@
       'SIGE.clients',
       'SIGE.products',
       'SIGE.news',
-      'SIGE.opportunities'
+      'SIGE.opportunities',
+      'SIGE.feedback'
     ]);
     
   angular.module('SIGE.routes', ['ngRoute', 'ngMaterial']);
@@ -25,7 +26,8 @@
   angular.module('SIGE.products', []);
   angular.module('SIGE.news', []);
   angular.module('SIGE.opportunities', ['ngMaterial']);
-
+  angular.module('SIGE.feedback', ['ngMaterial']);
+  
   angular.module('SIGE').controller('AppCtrl', function($scope, $location, $timeout, $mdSidenav, $log) {
       $scope.isSpecificPage = function() {
           return $location.path() == '/login'
@@ -82,13 +84,45 @@
 
   angular.module('SIGE.news').controller('NewsController', function($scope) { });
 
+  angular.module('SIGE.feedback').controller('FeedbackController', function($scope, $http, $mdToast) {
+    $scope.cliente = {};
+    
+    $scope.Send = function() {
+        $http({
+            method: 'POST',
+            url: 'https://cc21633f.ngrok.io/satisfacao/',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: {
+                Nome: $scope.cliente.Nome, 
+                Email: $scope.cliente.Email,
+                Nota: $scope.cliente.Nota,
+                Comentario: $scope.cliente.Comentario
+            }
+        })
+        .then(function () {
+            $mdToast.show(
+                $mdToast.simple()
+                  .textContent('Sua resposta foi registrada com sucesso!')
+                  .hideDelay(3000)
+              );
+        });
+      }
+
+  });
+
   angular.module('SIGE.opportunities').controller('OpportunitiesController', function($scope, $http, $mdToast) {
     $scope.candidato = {};
     
     $scope.Send = function() {
         $http({
             method: 'POST',
-            url: '/',
+            url: 'https://cc21633f.ngrok.io/interessados/',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             transformRequest: function(obj) {
                 var str = [];
@@ -106,7 +140,7 @@
         .then(function () {
             $mdToast.show(
                 $mdToast.simple()
-                  .textContent('Executado!')
+                  .textContent('Interesse registrado!')
                   .hideDelay(3000)
               );
         });

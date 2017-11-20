@@ -55,6 +55,11 @@
 				controller: 'OpportunitiesController',
 				controllerAs: 'OpportunitiesController',
 			})
+			.when('/feedback', {
+				templateUrl: 'assets/templates/feedback.html',
+				controller: 'FeedbackController',
+				controllerAs: 'FeedbackController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());
