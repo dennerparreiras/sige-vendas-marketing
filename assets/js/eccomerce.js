@@ -2,7 +2,7 @@
     'use strict';
         angular.module('SIGE.ecommerce').controller('ECommerceController', function ($scope, $rootScope, $mdDialog, $mdToast, $filter) {
             $scope.addToCart = function (product) {
-                product.idProduto = undefined;
+                /* product.idProduto = undefined; */
                 $rootScope.saveData('cart', angular.copy(product));
                 $mdToast.show(
                     $mdToast.simple()
@@ -49,7 +49,7 @@
             };
 
             $scope.removeFromCart = function (id) {
-                $rootScope.deleteData('cart', id);
+                $rootScope.deleteProductFromCart('cart', id);
                 $scope.cart = $rootScope.getData('cart');
             };
 
@@ -81,7 +81,9 @@
             };
 
             $scope.purchase = function () {
-                $location.path("/finish");
+                if ($scope.clientForm.$valid) {   
+                    $location.path("/finish");
+                }
             };
 
             $scope.openCart = function (ev) {
@@ -93,6 +95,27 @@
                     clickOutsideToClose: true
                 });
             };
+
+            $scope.loadParcelas = function (params) {
+                $scope.instalments = [
+                    { id: 1, name: "1x sem juros"},
+                    { id: 2, name: "2x sem juros"},
+                    { id: 3, name: "3x sem juros"},
+                    { id: 4, name: "4x com juros"},
+                    { id: 5, name: "5x com juros"},
+                    { id: 6, name: "6x com juros"}
+                ]
+            };
+
+            /* scope.loadParcelas = function () {
+                   /*  $scope.users = $scope.users || [
+                        { id: 1, name: 'Scooby Doo' },
+                        { id: 2, name: 'Shaggy Rodgers' },
+                        { id: 3, name: 'Fred Jones' },
+                        { id: 4, name: 'Daphne Blake' },
+                        { id: 5, name: 'Velma Dinkley' }
+                    ]; 
+            }; */
 
         });
 })();

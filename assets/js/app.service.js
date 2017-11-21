@@ -45,6 +45,14 @@
             }
         };
 
+        $rootScope.deleteProductFromCart = function (data, id){
+            for (var i in service[data]) {
+                if (service[data][i].idProduto == id) {
+                    return service[data].splice(i, 1);
+                }
+            }
+        };
+
         $rootScope.deleteData = function (data, id) {
             if (!id) {
                 return;

@@ -11,19 +11,32 @@
 
         <form name="clientForm">
             <div layout="row">
-                <span>Dados para pagamento:</span>
+                <span>Dados sobre:</span>
             </div>
 
             <div layout="row">
                 <md-input-container flex="50">
                     <label>Nome</label>
-                    <input type="text" ng-model="purchase.name">
+                    <input type="text" ng-model="purchase.nome">
                 </md-input-container>
 
                 <md-input-container flex="50">
-                    <label>CPF</label>
-                    <input type="text" ng-model="purchase.registration_code">
+                    <label>E-mail</label>
+                    <input type="email" ng-model="purchase.email">
                 </md-input-container>
+            </div>
+
+            <div layout="row">
+                    <p>Selecione o número de parcelas que deseja dividir:</p>
+                    <div layout="column" layout-align="center center">
+                        <md-select placeholder="Selecione as parcelas" ng-model="purchase.parcela" md-on-open="loadParcelas()" style="min-width: 200px;">
+                            <md-option ng-value="instalment" ng-repeat="instalment in instalments">{{instalment.name}}</md-option>
+                        </md-select>
+                </div>
+            </div>
+            
+            <div layout="row">
+                <md-button type="button" class="md-raised md-primary" ng-click="purchase()">Confirmar</md-button>
             </div>
         </form>
 

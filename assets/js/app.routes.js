@@ -60,6 +60,11 @@
 				controller: 'ResumeController',
 				controllerAs: 'ResumeController',
 			})
+			.when('/finish', {
+				templateUrl: 'assets/templates/ecommerce/finish.html',
+				controller: 'ResumeController',
+				controllerAs: 'ResumeController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());
