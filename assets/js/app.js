@@ -131,10 +131,10 @@
                 return str.join("&");
             },
             data: {
-                NomeCandidato: $scope.candidato.NomeCandidato, 
-                EmailCandidato: $scope.candidato.EmailCandidato,
-                VagaCandidato: $scope.candidato.VagaCandidato,
-                PretensaoCandidato: $scope.candidato.PretensaoCandidato
+                nome: $scope.candidato.NomeCandidato, 
+                email: $scope.candidato.EmailCandidato,
+                vaga: $scope.candidato.VagaCandidato,
+                pretensao: $scope.candidato.PretensaoCandidato
             }
         })
         .then(function () {
