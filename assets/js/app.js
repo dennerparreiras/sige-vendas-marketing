@@ -11,7 +11,8 @@
       'SIGE.clients',
       'SIGE.products',
       'SIGE.news',
-      'SIGE.opportunities'
+      'SIGE.opportunities',
+      'SIGE.feedback'
     ]);
     
   angular.module('SIGE.routes', ['ngRoute', 'ngMaterial']);
@@ -24,8 +25,9 @@
   angular.module('SIGE.clients', []);
   angular.module('SIGE.products', []);
   angular.module('SIGE.news', []);
-  angular.module('SIGE.opportunities', []);
-
+  angular.module('SIGE.opportunities', ['ngMaterial']);
+  angular.module('SIGE.feedback', ['ngMaterial']);
+  
   angular.module('SIGE').controller('AppCtrl', function($scope, $location, $timeout, $mdSidenav, $log) {
       $scope.isSpecificPage = function() {
           return $location.path() == '/login'
@@ -82,7 +84,69 @@
 
   angular.module('SIGE.news').controller('NewsController', function($scope) { });
 
-  angular.module('SIGE.opportunities').controller('OpportunitiesController', function($scope) { });
+  angular.module('SIGE.feedback').controller('FeedbackController', function($scope, $http, $mdToast) {
+    $scope.cliente = {};
+    
+    $scope.Send = function() {
+        $http({
+            method: 'POST',
+            url: 'https://cc21633f.ngrok.io/satisfacao/',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: {
+                Nome: $scope.cliente.Nome, 
+                Email: $scope.cliente.Email,
+                Nota: $scope.cliente.Nota,
+                Comentario: $scope.cliente.Comentario
+            }
+        })
+        .then(function () {
+            $mdToast.show(
+                $mdToast.simple()
+                  .textContent('Sua resposta foi registrada com sucesso!')
+                  .hideDelay(3000)
+              );
+        });
+      }
+
+  });
+
+  angular.module('SIGE.opportunities').controller('OpportunitiesController', function($scope, $http, $mdToast) {
+    $scope.candidato = {};
+    
+    $scope.Send = function() {
+        $http({
+            method: 'POST',
+            url: 'https://cc21633f.ngrok.io/interessados/',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: {
+                nome: $scope.candidato.NomeCandidato, 
+                email: $scope.candidato.EmailCandidato,
+                vaga: $scope.candidato.VagaCandidato,
+                pretensao: $scope.candidato.PretensaoCandidato
+            }
+        })
+        .then(function () {
+            $mdToast.show(
+                $mdToast.simple()
+                  .textContent('Interesse registrado!')
+                  .hideDelay(3000)
+              );
+        });
+      }
+
+  });
   
   angular.module('SIGE.sideNav').controller('NavCtrl', function($scope, $timeout, $mdSidenav, $log) {
       $scope.toggleLeft = buildDelayedToggler('left');

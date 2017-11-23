@@ -64,6 +64,11 @@
 				templateUrl: 'assets/templates/ecommerce/finish.html',
 				controller: 'ResumeController',
 				controllerAs: 'ResumeController',
+      })
+			.when('/feedback', {
+				templateUrl: 'assets/templates/feedback.html',
+				controller: 'FeedbackController',
+				controllerAs: 'FeedbackController',
 			})
 			.otherwise({redirectTo: '/home'});
 	}
