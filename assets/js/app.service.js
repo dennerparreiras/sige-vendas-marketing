@@ -33,7 +33,7 @@
                 });
         };
 
-        $rootScope.post = function (cart, totalCart, clientName, clientEmail, instalments, done) {
+        $rootScope.post = function (cart, totalCart, clientName, clientEmail, instalments, paymentType, done) {
             var urlPost = "http://gordinhosexy.com.br/api/orders";
             const products = cart.map(cart => ({
                 id: cart.idProduto,
@@ -44,6 +44,7 @@
             $http.post(urlPost, {  
                 instalments: instalments, 
                 total: totalCart, 
+                payment_type: paymentType,
                 client: {
                     name: clientName,
                     email: clientEmail

@@ -29,9 +29,18 @@
             <div layout="row">
                     <p>Selecione o número de parcelas que deseja dividir:</p>
                     <div layout="column" layout-align="center center">
-                        <md-select placeholder="Selecione as parcelas" ng-model="purchase.instalment" md-on-open="loadinstalments()" style="min-width: 200px;" required>
+                        <md-select placeholder="Selecione as parcelas" ng-model="purchase.instalments" md-on-open="loadinstalments()" required>
                             <md-option ng-value="instalment" ng-repeat="instalment in instalments">{{instalment.name}}</md-option>
                         </md-select>
+                </div>
+            </div>
+
+            <div layout="row">
+                <p>Selecione o de pagamento:</p>
+                <div layout="column" layout-align="center center">
+                    <md-select placeholder="Selecione a forma de pagamento" ng-model="purchase.paymentType" md-on-open="loadPaymentType()" required>
+                        <md-option ng-value="types" ng-repeat="types in paymentTypes">{{types.name}}</md-option>
+                    </md-select>
                 </div>
             </div>
             
