@@ -37,7 +37,7 @@
             var urlPost = "http://gordinhosexy.com.br/api/orders";
             const products = cart.map(cart => ({
                 id: cart.idProduto,
-                name: cart.name,
+                name: cart.nome,
                 price: cart.preco
             }));
 
