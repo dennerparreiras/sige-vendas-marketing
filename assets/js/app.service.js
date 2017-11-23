@@ -1,9 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('SIGE').run(function ($rootScope) {
-
-        var products = [{
+    angular.module('SIGE').run(function ($rootScope, $http) {
+        /* var products = [{
             id: 1,
             name: 'Batata Rufles',
             price: 22.30,
@@ -17,21 +16,61 @@
             id: 3,
             name: 'Bandaid',
             price: 99.99,
-        }];
+        }]; */
         
         var service = {
-            products: products,
             cart: []
         }
 
+        $rootScope.getProduto = function (data, id, done) {
+            var url = data;
+            if (id) {
+                url += "/" + id;
+            }
+            $http.get("http://pickingapi.azurewebsites.net/api/" + url)
+                .then(response => {
+                    done(response.data);
+                });
+        };
+
+        $rootScope.post = function (cart, totalCart, clientName, clientEmail, instalments, done) {
+            var urlPost = "http://gordinhosexy.com.br/api/orders";
+            const products = cart.map(cart => ({
+                id: cart.idProduto,
+                name: cart.nome,
+                price: cart.preco
+            }));
+
+            $http.post(urlPost, {  
+                instalments: instalments, 
+                total: totalCart, 
+                client: {
+                    name: clientName,
+                    email: clientEmail
+                }, 
+                products: products 
+            })
+            .then(response => {
+                done(response.data);
+            });
+        };
+
         $rootScope.getData = function (data, id) {
-           if (!id) {
+            if (!id) {
                 return service[data];
             }
 
             for (var i in service[data]) {
                 if (service[data][i].id == id) {
                     return service[data][i];
+                }
+            }
+        };
+
+        $rootScope.deleteProductFromCart = function (data, id){
+            for (var i in service[data]) {
+                if (service[data][i].idProduto == id) {
+                    return service[data].splice(i, 1);
                 }
             }
         };

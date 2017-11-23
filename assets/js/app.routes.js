@@ -44,17 +44,27 @@
 				templateUrl: 'assets/templates/product.html',
 				controller: 'ProductController',
 				controllerAs: 'ProductController',
-      })
+      		})
 			.when('/news', {
 				templateUrl: 'assets/templates/news.html',
 				controller: 'NewsController',
 				controllerAs: 'NewsController',
-      })
+      		})
 			.when('/opportunities', {
 				templateUrl: 'assets/templates/opportunities.html',
 				controller: 'OpportunitiesController',
 				controllerAs: 'OpportunitiesController',
 			})
+			.when('/resume', {
+				templateUrl: 'assets/templates/ecommerce/resume.html',
+				controller: 'ResumeController',
+				controllerAs: 'ResumeController',
+			})
+			.when('/finish', {
+				templateUrl: 'assets/templates/ecommerce/finish.html',
+				controller: 'ResumeController',
+				controllerAs: 'ResumeController',
+      })
 			.when('/feedback', {
 				templateUrl: 'assets/templates/feedback.html',
 				controller: 'FeedbackController',
