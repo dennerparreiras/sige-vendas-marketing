@@ -33,6 +33,28 @@
                 });
         };
 
+        $rootScope.post = function (cart, totalCart, clientName, clientEmail, instalments, done) {
+            var urlPost = "http://gordinhosexy.com.br/api/orders";
+            const products = cart.map(cart => ({
+                id: cart.idProduto,
+                name: cart.name,
+                price: cart.preco
+            }));
+
+            $http.post(urlPost, {  
+                instalments: instalments, 
+                total: totalCart, 
+                client: {
+                    name: clientName,
+                    email: clientEmail
+                }, 
+                products: products 
+            })
+            .then(response => {
+                done(response.data);
+            });
+        };
+
         $rootScope.getData = function (data, id) {
             if (!id) {
                 return service[data];

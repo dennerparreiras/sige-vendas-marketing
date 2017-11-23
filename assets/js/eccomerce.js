@@ -68,7 +68,7 @@
 
         });
 
-        angular.module('SIGE.ecommerce').controller('ResumeController', function ($scope, $rootScope, $location, $mdDialog) {
+        angular.module('SIGE.ecommerce').controller('ResumeController', function ($scope, $rootScope, $location, $mdDialog, $http) {
             $scope.purchase = {};
             $scope.cart = $rootScope.getData('cart');
 
@@ -81,22 +81,30 @@
             };
 
             $scope.purchase = function () {
+                console.log($scope.totalCard());
+                console.log($scope.cart);
                 if ($scope.clientForm.$valid) {   
-                    $location.path("/finish");
+                    //fazer o POST
+                    $rootScope.post($scope.cart, $scope.totalCard(), $scope.purchase.nome, $scope.purchase.email, $scope.purchase.instalment, function(params){
+                        $location.path("/finish");
+                    })
                 }
             };
 
             $scope.openCart = function (ev) {
                 $mdDialog.show({
                     controller: 'CartController',
-                    templateUrl: 'pages/ecommerce/cart.modal.html',
+                    templateUrl: 'assets/templates/ecommerce/cart.modal.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
                     clickOutsideToClose: true
+                })
+                 .then(function (answer) {
+                }, function () {
                 });
             };
 
-            $scope.loadParcelas = function (params) {
+            $scope.loadinstalments = function (params) {
                 $scope.instalments = [
                     { id: 1, name: "1x sem juros"},
                     { id: 2, name: "2x sem juros"},
@@ -106,16 +114,6 @@
                     { id: 6, name: "6x com juros"}
                 ]
             };
-
-            /* scope.loadParcelas = function () {
-                   /*  $scope.users = $scope.users || [
-                        { id: 1, name: 'Scooby Doo' },
-                        { id: 2, name: 'Shaggy Rodgers' },
-                        { id: 3, name: 'Fred Jones' },
-                        { id: 4, name: 'Daphne Blake' },
-                        { id: 5, name: 'Velma Dinkley' }
-                    ]; 
-            }; */
 
         });
 })();

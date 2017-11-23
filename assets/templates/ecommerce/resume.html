@@ -17,19 +17,19 @@
             <div layout="row">
                 <md-input-container flex="50">
                     <label>Nome</label>
-                    <input type="text" ng-model="purchase.nome">
+                    <input type="text" ng-model="purchase.nome" required>
                 </md-input-container>
 
                 <md-input-container flex="50">
                     <label>E-mail</label>
-                    <input type="email" ng-model="purchase.email">
+                    <input type="email" ng-model="purchase.email" required>
                 </md-input-container>
             </div>
 
             <div layout="row">
                     <p>Selecione o número de parcelas que deseja dividir:</p>
                     <div layout="column" layout-align="center center">
-                        <md-select placeholder="Selecione as parcelas" ng-model="purchase.parcela" md-on-open="loadParcelas()" style="min-width: 200px;">
+                        <md-select placeholder="Selecione as parcelas" ng-model="purchase.instalment" md-on-open="loadinstalments()" style="min-width: 200px;" required>
                             <md-option ng-value="instalment" ng-repeat="instalment in instalments">{{instalment.name}}</md-option>
                         </md-select>
                 </div>
@@ -41,8 +41,8 @@
         </form>
 
         <div class="button-float">
-            <md-button class="md-fab">
-                <i class="material-icons" ng-click="openCart($event)">add_shopping_cart</i>
+            <md-button class="md-fab" ng-click="openCart($event)">
+                <i class="material-icons">add_shopping_cart</i>
             </md-button>
         </div>
     </md-content>
